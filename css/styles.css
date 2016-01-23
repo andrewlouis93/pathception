@@ -5,6 +5,10 @@ body {
     font-family: "Segoe UI", "Lucida Grande", sans-serif;
     font-size: 90%;
 }
+#scroll-cont{
+    display: none;
+}
+
 #cont {
     position: absolute;
     top: 0px;
