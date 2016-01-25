@@ -46,7 +46,8 @@ Override the default jit label to change the rendered label
 */
 JitExtend.renderLabel = function(canvas, node, controller) {
     var ctx = canvas.getCtx();
-    ctx.font = FONTSIZE + "px Arial bold"; // + " Segoe UI";
+    ctx.font = FONTSIZE + "px Open Sans bold"; // + " Segoe UI";
+    ctx.font = "14px Open Sans, sans-serif";
     if (PAPER) {
         ctx.font = FONTSIZE + "px Myriad Pro Black";
     }

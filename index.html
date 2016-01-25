@@ -46,7 +46,7 @@ POSSIBILITY OF SUCH DAMAGE.
 <script language="javascript" type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
 <script language="javascript" type="text/javascript" src="https://code.jquery.com/jquery-migrate-1.3.0.min.js"></script>
 
-<script language="javascript" type="text/javascript" src="lib/jquery-ui-1.8.12.custom.min.js"></script>
+<script language="javascript" type="text/javascript" src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
 <script language="javascript" type="text/javascript" src="lib/jquery.cluetip.js"></script>
 <script language="javascript" type="text/javascript" src="lib/jit-mod.js"></script>
 <script language="javascript" type="text/javascript" src="lib/jquery.flot.min.js"></script>
@@ -615,11 +615,13 @@ function init() {
         } else {
             //snap to ends when sliding stops
             var curv = $("#fromtoslide").slider("value");
-            var newv = 0;
-            if (curv >= 50) {
-                newv = 100;
-            }
-            $("#fromtoslide").slider("value", newv);
+            // var newv = 0;
+            // if (curv >= 50) {
+            //     newv = 100;
+            // }
+
+            clearTimeout(window.slidertimeout)
+            $("#fromtoslide").slider("value", curv);
         }
     }).data("dir","asc");
     
@@ -737,7 +739,10 @@ var setslide = function(val, force) {
 
     reYplot();
     if (!isStopped) {
-        setTimeout(setslide, delay, nval);
+        console.log(isStopped);
+        console.log($("#fromtoslide").slider("value"));
+        console.log(nval);
+        window.slidertimeout = setTimeout(setslide, delay, nval);
     }
 }
 var computeSlide = function(val) {
