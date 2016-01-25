@@ -144,8 +144,35 @@ body {
     left: -1px;
 }
 
+#zoom-cont-block{
+    right: 0px;
+    width: 10em;
+    height: 3.0em;
+    bottom: 0px;
+}
+#zoom-value{
+    position: absolute;
+    width: 100%;
+    height: 2em;
+    top: -1.5em;
+    font-size: 1.2em;
+    text-align: center;
+    font-weight: bold;
+}
 #zoom-cont{
-    right:1px;
+    height: 100%;
+}
+#zoom-in,#zoom-out{
+    width: 46.9%;
+    height: 100%;
+    font-size: 1.5em;
+    outline: none;
+}
+#zoom-in{
+    color:#cc0000; /*PATHCEPTION RED*/
+}
+#zoom-out{
+    color:#004276; /*PATHCEPTION BLUE*/
 }
 .ui-styles{
     position: fixed;
