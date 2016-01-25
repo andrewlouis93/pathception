@@ -5,6 +5,16 @@ body {
     font-family: "Segoe UI", "Lucida Grande", sans-serif;
     font-size: 90%;
 }
+
+#mode-sel-cont{
+    position: relative;
+    width:100%;
+}
+
+#mode-sel-cont label{
+    width:50%;
+}
+
 #scroll-cont{
     display: none;
 }
@@ -93,10 +103,15 @@ body {
 }
 #uimode-cont {
     position: fixed;
-    left: 50%;
+    width: 38%;
     bottom: -70px;
-    margin-left: -160px;
+    /* margin-left: -160px; */
     padding: 10px;
+    margin-left: 0;
+    margin-right: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
 }
 #legend-cont {
     position: fixed;
@@ -126,11 +141,18 @@ body {
     padding: 6px;
 }
 #tasksel-cont {
-    position: fixed;
     left: -1px;
+}
+
+#zoom-cont{
+    right:1px;
+}
+.ui-styles{
+    position: fixed;
     bottom: -70px;
     padding: 6px;
 }
+
 #scroll-cont {
     position: fixed;
     right: -40px;

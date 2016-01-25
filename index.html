@@ -106,9 +106,10 @@ var reYplot = function() {
 
     if (!fd.graph.processed){
         
+        var winheight = $(window).height();
         fd.canvas.resize($(window).width(), $(window).height());
-        fd.canvas.translate(0,-$(window).height()/2)
-        fd.canvas.scale(0.8,0.8)
+        fd.canvas.translate(0, (-winheight/2 + (0.1*winheight)) )
+        // fd.canvas.scale(0.8,0.8)
         fd.graph.processed = true;
     }
 };
@@ -405,7 +406,6 @@ function init() {
 
     fd = new $jit.ForceDirected({
         injectInto: "grapharea",
-        height: canvas_height,
         Navigation: {
           enable: true,
           //panning: 'avoid nodes',
@@ -426,9 +426,8 @@ function init() {
         },
         Label: {
           type: 'Native',
-          size: 10,
+          size: 11,
           color: '#000',
-          style: 'bold'
         },
         Tips: {
           type: 'Native',
@@ -436,17 +435,20 @@ function init() {
           offsetX: 10,
           offsetY: 10,
           onShow: function(tip, node) {
-            tip.innerHTML = node.name;
+            // tip.innerHTML = node.name;
+
           }
         },
         onBeforeCompute: function() {
            fd.graph.eachNode(function (n) {
             //n.pos.setc(n.data.startx,n.data.starty);
             n.setPos(new $jit.Complex(n.data.startx, n.data.starty));
+            console.log(new $jit.Complex(n.data.startx, n.data.starty));
            });
             if (!fd.graph.processed){
-                fd.canvas.translate(0,-$(window).height()/2)
-                fd.canvas.scale(0.8,0.8)
+                var winheight = $(window).height();
+                fd.canvas.translate(0, (-winheight/2 + (0.1*winheight)) )
+                // fd.canvas.scale(0.8,0.8)
                 fd.graph.processed = true;
             }
         },
@@ -904,12 +906,12 @@ function finalplot() {
 <body onload="init()">
 
 <div id="cont">
-    <div id="help-cont">
+<!--     <div id="help-cont">
         <b>Guide</b>
         <div>Click <b>"next task"</b> to go to the next graph</div>
         <div>Select a <b>mode</b> (side-by-side/diff/animation)</div>
         <div>Pan by dragging, zoom with the mouse wheel</div>
-    </div>
+    </div> -->
     <div id="grapharea">
     
     </div>
@@ -935,9 +937,9 @@ function finalplot() {
 
 <div id="uimode-cont" class="uiblock">
     <div id="mode-sel-cont">
-        <input type="radio" name="rad-mode" id="rad-mode-side"/><label for="rad-mode-side">Side-by-Side</label>
-        <input type="radio" name="rad-mode" id="rad-mode-diff" checked="checked"/><label for="rad-mode-diff">Diff</label>
-        <input type="radio" name="rad-mode" id="rad-mode-anim"/><label for="rad-mode-anim">Animation</label>
+        <input type="radio" name="rad-mode" id="rad-mode-side" checked="checked"/><label for="rad-mode-side">Side-by-Side</label>
+<!--         <input type="radio" name="rad-mode" id="rad-mode-diff" /><label for="rad-mode-diff">Diff</label>
+ -->        <input type="radio" name="rad-mode" id="rad-mode-anim"/><label for="rad-mode-anim">Animation</label>
     </div>
 </div>
 
@@ -981,16 +983,21 @@ function finalplot() {
     </ol>
 </div>
 
-<div id="legend-cont" class="uiblock">
+<!-- <div id="legend-cont" class="uiblock">
     <span id="legend-before">Before</span>
     <span id="legend-after">After</span>
+</div> -->
+
+<div id="zoom-cont" class="uiblock ui-styles">
+    <button id="zoom-in" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-primary">Before</button>
+    <button id="zoom-out" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-primary">After</button>
 </div>
 
 <div id="devmode-cont" class="uiblock">
     <button id="btn-devmode">Developer</button>
 </div>
 
-<div id="tasksel-cont" class="uiblock">
+<div id="tasksel-cont" class="uiblock ui-styles">
     <button id="btn-tasknext">Next Task</button>
 </div>
 
