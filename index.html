@@ -1,34 +1,6 @@
 <!DOCTYPE html>
 <html>
-<!--
-Copyright (c) 2014, Carnegie Mellon University.
-All rights reserved.
 
-Redistribution and use in source and binary forms, with or without
-modification, are permitted provided that the following conditions
-are met:
-1. Redistributions of source code must retain the above copyright
-   notice, this list of conditions and the following disclaimer.
-2. Redistributions in binary form must reproduce the above copyright
-   notice, this list of conditions and the following disclaimer in the
-   documentation and/or other materials provided with the distribution.
-3. Neither the name of the University nor the names of its contributors
-   may be used to endorse or promote products derived from this software
-   without specific prior written permission.
-
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
-``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
-LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
-A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT
-HOLDERS OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
-INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
-BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS
-OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED
-AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
-LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY
-WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
-POSSIBILITY OF SUCH DAMAGE.
--->
 <head>
 <title>Visualizing Request-Flow Comparison</title>
 
@@ -108,16 +80,27 @@ var reYplot = function() {
         var nd = graph.index[n.id];
         n.setPos(new $jit.Complex(nd.data.startx, nd.data.starty));
     });
+
+    fd.canvas.clear();
     fd.plot();
 
     if (!fd.graph.processed){
-        
         var winheight = $(window).height();
-        fd.canvas.resize($(window).width(), $(window).height());
-        fd.canvas.translate(0, (-winheight/2 + (0.1*winheight)) )
+        // fd.canvas.resize($(window).width(), $(window).height());
+        // fd.canvas.translate(0, (-winheight/2 + (0.1*winheight)) )
         // fd.canvas.scale(0.8,0.8)
         fd.graph.processed = true;
     }
+    else{
+        var sx = fd.canvas.scaleOffsetX, sy = fd.canvas.scaleOffsetY;
+        var tx = fd.canvas.translateOffsetX, ty = fd.canvas.translateOffsetY;
+        var dx = -tx / sx, dy = -ty / sy;
+        fd.canvas.translate(dx, dy);
+        if (fd.canvas.translateHandler) {
+            fd.canvas.translateHandler(dx, dy);
+        }
+    }
+
 };
 
 var Loader = {};
@@ -185,6 +168,7 @@ $(window).resize(function() {
 });
 
 function loadProblem(name) {
+    fd.canvas.clear();
     var thedir = "graphs/" + name + "/out";
     RFGraph.setdir(thedir);
 
@@ -195,10 +179,21 @@ function loadProblem(name) {
         var availh = cont.height();
         var totalh = 0;
         $.each(dta, function(dx,el) {
-            totalh += el.cost;
+            if (el.cost <= 0)
+                totalh += 10
+            else
+                totalh += el.cost;
         });
+
         heights = $.map(dta, function(el,dx) {
-            return Math.floor(el.cost/totalh * availh);
+            if (el.close <= 0){
+                console.log(Math.floor(10/totalh * availh));
+                return Math.floor(10/totalh * availh);
+            }
+            else{
+                console.log(Math.floor(el.cost/totalh * availh));
+                return Math.floor(el.cost/totalh * availh);
+            }
         });
 
         cont.empty();
@@ -215,7 +210,8 @@ function loadProblem(name) {
             var col = dta[i].type == "Structural mutation" ? 0 : 150;
             item
             //.text(prec + "/" + mut)
-            .height(heights[i])
+            .height(50)
+            .text("COST: " + dta[i].cost)
             .css({
                 "background-color":"rgb(" + col + "," + col + "," + col + ")"
             })
@@ -299,12 +295,12 @@ function loadProblem(name) {
 
                     compute();
 
-                    if (Mode.isEnabled("grader")) {
-                        //$("#anno-btnmark-cont").css("display","none");
-                        //$("#rad-mark").css("display","none");
-                        $("#anno-grader-cont").css("display","block");
-                        grader.show(thedir);
-                    }
+                    // if (Mode.isEnabled("grader")) {
+                    //     //$("#anno-btnmark-cont").css("display","none");
+                    //     //$("#rad-mark").css("display","none");
+                    //     $("#anno-grader-cont").css("display","block");
+                    //     grader.show(thedir);
+                    // }
 
                     setTimeout(finalplot, 20);
                 });
@@ -1013,12 +1009,12 @@ $(document).on('mouseover','#zoom-in,#zoom-out', function(){
             <option value="task3">Task 3</option>
             <option value="task4">Task 4</option>
             <option value="task5">Task 5</option>
+            <option value="fuckingyes">FUCKING YES</option>
             <option value="training" selected="selected">Training</option>
         </select>
+        <ol id="grlist">    
+        </ol>        
     </div>
-    <ol id="grlist">
-    
-    </ol>
 </div>
 
 <!-- <div id="legend-cont" class="uiblock">
@@ -1048,10 +1044,6 @@ $(document).on('mouseover','#zoom-in,#zoom-out', function(){
 
 <div id="scroll-cont">
     <div id="scrollbtn"></div>
-</div>
-
-<div id="diagram-cont">
-    <img src="css/system-diagram.png" alt="" width="350" />
 </div>
 
 <div id="annotate-cont" class="uiblock" style="visibility:hidden;">

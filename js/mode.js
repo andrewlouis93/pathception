@@ -84,16 +84,6 @@ Mode.BLOCKS = {
 		enabled: true,
 		cssin: { right: -1 },
 		cssout: { right: 40 }
-	},
-	"diagram": {
-		enabled: DIAGRAM_ENABLED,
-		cssin: { top: 20 },
-		cssout: { top: -200 }
-	},
-	"grader": {
-		enabled: GRADER_ENABLED,
-		cssin: { top: -1 },
-		cssout: { top: -100 }
 	}
 };
 
@@ -129,11 +119,11 @@ Mode.init = function(changecb) {
 		$.each(Mode.BLOCKS, function(k, v) {
 			var method = enable ? "showBlock" : "hideBlock";
 			var otherMethod = enable ? "hideBlock" : "showBlock";
-			if ($.inArray(k, ["devmode","scroll","legend","tasksel","diagram"]) == -1) {
+			if ($.inArray(k, ["devmode","scroll","legend","tasksel"]) == -1) {
 				Mode[method](k);
 			}
  
-			Mode[otherMethod]("diagram");
+			// Mode[otherMethod]("diagram");
 		});
 	});
 };
@@ -145,6 +135,8 @@ Mode.hideBlock = function(name) {
 	$("#" + name + "-cont").animate(Mode.BLOCKS[name].cssout);
 };
 Mode.isEnabled = function(name) {
+	console.log(name);
+	console.log(Mode.BLOCKS[name].enabled);
 	return Mode.BLOCKS[name].enabled;
 };
 Mode.setEnabled = function(name, val) {

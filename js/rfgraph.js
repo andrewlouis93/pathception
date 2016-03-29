@@ -458,8 +458,12 @@ RFGraph.makegraph = function(graph, options) {
     var coldx = getdefault(options, "coldx", 0);
 	var lblregex = getdefault(options, "lblregex", /\d+\.\d+/ig);
     var edgetimedx = getdefault(options, "edgetimedx", 0); //index to parse the edge time from
+
     var edgetimekey = getdefault(options, "edgetimekey", "weight"); //key to place the edge time in
     var colorkey = getdefault(options, "colorkey", "color"); //key to place the edge color in
+
+    console.log("EDGETIMEDX", edgetimedx);
+    console.log("EDGETIMEKEY", edgetimekey);
 
     //input bounding box
     var bbox = [0,0,100,100];
@@ -573,6 +577,7 @@ RFGraph.makegraph = function(graph, options) {
             }
             if (lblm) {
                 for (var j = 0; j < lblm.length; ++j) {
+                    console.log("LABEL PRINT", parseFloat(lblm[j]))
                     edgetimes.push(parseFloat(lblm[j]));
                 }
                 if (!edgetimes[edgetimedx]) {
