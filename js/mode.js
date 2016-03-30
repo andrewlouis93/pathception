@@ -40,21 +40,21 @@ Mode.BLOCKS = {
 		cssin: { left: -1 },
 		cssout: { left: -500 }
 	},
-	"info": {
-		enabled: false,
-		cssin: { left: -1 },
-		cssout: { left: -400 }
-	},
+	// "info": {
+	// 	enabled: false,
+	// 	cssin: { left: -1 },
+	// 	cssout: { left: -400 }
+	// },
 	"slider": {
 		enabled: false,
 		cssin: { left: -1 },
 		cssout: { left: -450 }
 	},
-	"cdf": {
-		enabled: false,
-		cssin: { left: -1 },
-		cssout: { left: -300 }		
-	},
+	// "cdf": {
+	// 	enabled: false,
+	// 	cssin: { left: -1 },
+	// 	cssout: { left: -300 }		
+	// },
 	"grlist": {
 		enabled: false,
 		cssin: { right: 38 },
@@ -129,6 +129,7 @@ Mode.init = function(changecb) {
 };
 
 Mode.showBlock = function(name) {
+	console.log("SHOWBLOCK: ", name);
 	$("#" + name + "-cont").animate(Mode.BLOCKS[name].cssin);
 };
 Mode.hideBlock = function(name) {

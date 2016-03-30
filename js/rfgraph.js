@@ -577,7 +577,8 @@ RFGraph.makegraph = function(graph, options) {
             }
             if (lblm) {
                 for (var j = 0; j < lblm.length; ++j) {
-                    console.log("LABEL PRINT", parseFloat(lblm[j]))
+                    // TODO: ANDREW
+                    // console.log("LABEL PRINT", parseFloat(lblm[j]))
                     edgetimes.push(parseFloat(lblm[j]));
                 }
                 if (!edgetimes[edgetimedx]) {

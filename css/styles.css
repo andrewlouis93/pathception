@@ -78,7 +78,7 @@ body {
 
 #info-cont {
     position: fixed;
-    left: -400px; top: 80px;
+    left: -1px; top: 80px;
 }
 #slider-cont {
     position: fixed;
@@ -95,7 +95,7 @@ body {
 }
 #cdf-cont {
     position: fixed;
-    left: -300px; top: 250px;
+    left: -1px; top: 250px;
     padding: 8px;
 }
 #uimode-cont {

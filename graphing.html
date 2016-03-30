@@ -454,7 +454,8 @@ function init() {
            fd.graph.eachNode(function (n) {
             //n.pos.setc(n.data.startx,n.data.starty);
             n.setPos(new $jit.Complex(n.data.startx, n.data.starty));
-            console.log(new $jit.Complex(n.data.startx, n.data.starty));
+            // TODO: ANDREW
+            // console.log(new $jit.Complex(n.data.startx, n.data.starty));
            });
             if (!fd.graph.processed){
                 var winheight = $(window).height();
@@ -1059,10 +1060,6 @@ $(document).on('mouseover','#zoom-in,#zoom-out', function(){
         <button id="zoom-in" role="button" class="btn btn-default btn-lg">+</button>
         <button id="zoom-out" role="button" class="btn btn-default btn-lg">-</button>
     </div>
-</div>
-
-<div id="devmode-cont" class="uiblock">
-    <button id="btn-devmode">Developer</button>
 </div>
 
 <!-- <div id="tasksel-cont" class="uiblock ui-styles">
