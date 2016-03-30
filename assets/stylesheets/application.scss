@@ -1,0 +1,38 @@
+// "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"
+@import "bootstrap/variables";
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "bootstrap/jumbotron";
+@import "burst";
+
+.jumbotron{
+	position: absolute;
+    display: block;
+    top: 0;
+    bottom: 0;
+    margin-top: auto;
+    margin-bottom: auto;
+    width: 100%;
+    height: 50%;
+    p{
+    	text-align:center;
+    }
+    .btn{
+        margin: 23px;
+        padding: 13px 19px;
+    }
+}
+
+.info{
+    font-family: "Big Caslon Medium";
+    font-style: italic;
+}
+
+#banner{
+    font-family: Helvetica;
+    font-weight: 600;
+    color: $base-red;
+	text-align: center;
+    font-size: 6em;	
+    letter-spacing: -3px;
+}
