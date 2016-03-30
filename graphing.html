@@ -5,6 +5,8 @@
 <title>Visualizing Request-Flow Comparison</title>
 
 <link rel="stylesheet" href="css/styles.css" type="text/css" media="screen">
+
+
 <link rel="stylesheet" href="css/blitzer/jquery-ui-1.8.12.custom.css" type="text/css" media="screen" />
 <link rel="stylesheet" href="css/jquery.cluetip.css" type="text/css">
 
@@ -15,13 +17,19 @@
 
 <!-- Libraries -->
 <!--[if lte IE 8]><script language="javascript" type="text/javascript" src="lib/excanvas.js"></script><![endif]-->
-<script language="javascript" type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
-<script language="javascript" type="text/javascript" src="https://code.jquery.com/jquery-migrate-1.3.0.min.js"></script>
+<script language="javascript" type="text/javascript" src="/assets/javascripts/jquery-2.2.0.min.js"></script>
+<script language="javascript" type="text/javascript" src="/assets/javascripts/jquery-migrate-1.3.0.min.js"></script>
 
-<script language="javascript" type="text/javascript" src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+<script language="javascript" type="text/javascript" src="/assets/javascripts/jquery-ui.min.js"></script>
 <script language="javascript" type="text/javascript" src="lib/jquery.cluetip.js"></script>
 <script language="javascript" type="text/javascript" src="lib/jit-mod.js"></script>
 <script language="javascript" type="text/javascript" src="lib/jquery.flot.min.js"></script>
+
+
+<!-- Bootstrap core CSS -->
+<link href="/assets/stylesheets/application.css" rel="stylesheet">
+<!-- Bootstrap core JS -->
+<script src="/assets/javascripts/bootstrap.min.js"></script>
 
 <!-- Our JS -->
 <script language="javascript" type="text/javascript" src="js/annotate.js"></script>
@@ -207,7 +215,8 @@ function loadProblem(name) {
             //"every other" color
             var eocol = (i % 2 * 50);
             //color for structural mutations vs everything else
-            var col = dta[i].type == "Structural mutation" ? 0 : 150;
+            var col = dta[i].type == "Structural mutation" ? eocol : 150;
+            
             item
             //.text(prec + "/" + mut)
             .height(50)
@@ -670,6 +679,10 @@ function init() {
 
     grader = new Grader("#inp-grader","#btn-gradergo", anno, 
         "#btn-grade-ok","#btn-grade-fp","#btn-grade-fn");
+
+
+    /* default to developer mode */
+    // $("#btn-devmode").trigger('click');
 }
 
 Tasks = {};
@@ -939,6 +952,50 @@ $(document).on('mouseover','#zoom-in,#zoom-out', function(){
 </head>
 <body onload="init()">
 
+
+<nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">nodeMD</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/">Home</a></li>
+            <li><a href="/about.html">About <span class="sr-only">(current)</span></a></li>            
+            <li class="active"><a href="/graphing.html">Demo</a></li>
+            <li class="select-padding">
+                <select id="sel-problem" class="form-control">
+                    <option value="iozone_mws">IOzone</option>
+                    <option value="mds_prefetch_10">Prefetch 10</option>
+                    <option value="mds_prefetch_50">Prefetch 50</option>
+                    <option value="postmark_large_10">MDS Config</option>
+                    <option value="mdsconfig">mdsconfig</option>
+                    <option value="hadoop">Hadoop</option>
+                    <option value="hadoop_compressed">Hadoop Cmp</option>
+                    <option value="spectroscope_1ms">1ms Spin</option>
+                    <option value="spectroscope_10us">10us Spin</option>
+                    <option value="spectroscope_500us">500us Spin</option>
+                    <option value="task1">Task 1</option>
+                    <option value="task2">Task 2</option>
+                    <option value="task3">Task 3</option>
+                    <option value="task4">Task 4</option>
+                    <option value="task5">Task 5</option>
+                    <option value="fuckingyes">FUCKING YES</option>
+                    <option value="training" selected="selected">Training</option>
+                </select>
+            </li>            
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+</nav>
+
+
 <div id="cont">
 <!--     <div id="help-cont">
         <b>Guide</b>
@@ -991,32 +1048,6 @@ $(document).on('mouseover','#zoom-in,#zoom-out', function(){
     <button id="btn-blink" style="float:left;margin:8px 8px 0px 8px;">start</button>
 </div>
 
-<div id="grlist-cont" class="uiblock">
-    <div id="cont-sel-problem">
-        <select id="sel-problem">
-            <option value="iozone_mws">IOzone</option>
-            <option value="mds_prefetch_10">Prefetch 10</option>
-            <option value="mds_prefetch_50">Prefetch 50</option>
-            <option value="postmark_large_10">MDS Config</option>
-            <option value="mdsconfig">mdsconfig</option>
-            <option value="hadoop">Hadoop</option>
-            <option value="hadoop_compressed">Hadoop Cmp</option>
-            <option value="spectroscope_1ms">1ms Spin</option>
-            <option value="spectroscope_10us">10us Spin</option>
-            <option value="spectroscope_500us">500us Spin</option>
-            <option value="task1">Task 1</option>
-            <option value="task2">Task 2</option>
-            <option value="task3">Task 3</option>
-            <option value="task4">Task 4</option>
-            <option value="task5">Task 5</option>
-            <option value="fuckingyes">FUCKING YES</option>
-            <option value="training" selected="selected">Training</option>
-        </select>
-        <ol id="grlist">    
-        </ol>        
-    </div>
-</div>
-
 <!-- <div id="legend-cont" class="uiblock">
     <span id="legend-before">Before</span>
     <span id="legend-after">After</span>
@@ -1025,8 +1056,8 @@ $(document).on('mouseover','#zoom-in,#zoom-out', function(){
 <div id="zoom-cont-block" class="uiblock ui-styles">
     <label id="zoom-value" for="zoom">0x</label>
     <div id="zoom-cont" class="button-set">
-        <button id="zoom-in" role="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-primary">+</button>
-        <button id="zoom-out" role="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-primary">-</button>
+        <button id="zoom-in" role="button" class="btn btn-default btn-lg">+</button>
+        <button id="zoom-out" role="button" class="btn btn-default btn-lg">-</button>
     </div>
 </div>
 
@@ -1034,9 +1065,9 @@ $(document).on('mouseover','#zoom-in,#zoom-out', function(){
     <button id="btn-devmode">Developer</button>
 </div>
 
-<div id="tasksel-cont" class="uiblock ui-styles">
+<!-- <div id="tasksel-cont" class="uiblock ui-styles">
     <button id="btn-tasknext">Next Task</button>
-</div>
+</div> -->
 
 <div id="grader-cont" class="uiblock">
     Evaluate answers for: <input type="text" id="inp-grader" value="realuser/students/8641.txt" /><button id="btn-gradergo">Go</button>

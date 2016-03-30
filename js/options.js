@@ -29,7 +29,7 @@
  */
 
 // Enable "developer mode" toggle
-var DEVMODE_ENABLED = false;
+var DEVMODE_ENABLED = true;
 
 // Enable the system diagram
 var DIAGRAM_ENABLED = false;
@@ -38,7 +38,7 @@ var DIAGRAM_ENABLED = false;
 var GRADER_ENABLED = false;
 
 // Optimize for display on paper?
-var PAPER = false;
+var PAPER = true;
 
 // Does a mousedown drag nodes?
 var MOUSE_DRAGS = false;

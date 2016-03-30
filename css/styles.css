@@ -39,9 +39,6 @@ body {
     opacity: 0.8;
     overflow-y: hidden;
 }
-#sel-problem {
-    font-size: 30px;
-}
 
 #grlist {
     font-size: 15px;
@@ -85,7 +82,7 @@ body {
 }
 #slider-cont {
     position: fixed;
-    left: -450px; top: 10px;
+    left: -450px; top: 100px;
 }
 #help-cont {
     position: fixed;
@@ -145,10 +142,10 @@ body {
 }
 
 #zoom-cont-block{
+    top: 30%;
     right: 0px;
     width: 10em;
     height: 3.0em;
-    bottom: 0px;
 }
 #zoom-value{
     position: absolute;
