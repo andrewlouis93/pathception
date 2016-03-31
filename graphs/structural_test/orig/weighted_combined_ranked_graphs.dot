@@ -1,0 +1,9 @@
+# 1  R: 1816821.0 usecs
+Digraph G {
+1 [fontcolor="blue" shape="plaintext" label="Cluster ID: 2\nSpecific Mutation Type: Structural mutation\nCost: 3644631\nOverall Mutation Type: Structural_Mutation\nCandidate originating clusters: 1 (2) \n\nAvg. response times: 0 us ; 1822321 us\nStandard Deviations: 0 us ; 7778 us\nKS-Test2 P-value: -1.000\nCluster likelihood: 0.3333 ; 1.0000\nPercent makeup: 0 / 100\nrequests: 0 ; 2"]
+1.10 [label="e142158__t3__ROOT\n"]
+1.20 [label="e142158__t3__doImportCheckpoint_hadoop_hdfs_server_namenode_FSImage\n"]
+1.30 [label="e142158__t3__NEW_TASK\n"]
+1.10 -> 1.20 [color="black" label="p:-2.00\n   a: 6us / 0us\n   s: 1us / 0us"]
+1.20 -> 1.30 [color="black" label="p:-1.00\n   a: 0us / 100us\n   s: 0us / 0us"]
+}

@@ -1,0 +1,7 @@
+# 1  R: 5.0 usecs
+Digraph G {
+1 [fontcolor="blue" shape="plaintext" label="Cluster ID: 1\nSpecific Mutation Type: Originating cluster\nCost: 0\nOverall Mutation Type: Originating_Cluster\nCandidate originating clusters: \n\nAvg. response times: 0 us ; 6 us\nStandard Deviations: 0 us ; 6 us\nKS-Test2 P-value: -1.000\nCluster likelihood:  0.0000 ; 1.0000\nPercent makeup: 0 / 100\nrequests: 2 ; 0"]
+1.1 [label="e142189__t3__ROOT\n"]
+1.2 [label="e142189__t3__doImportCheckpoint_hadoop_hdfs_server_namenode_FSImage\n"]
+1.1 -> 1.2 [color="black" label="p:-1.00\n   a: 0us / 0us\n   s: 0us / 0us"]
+}

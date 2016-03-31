@@ -1,0 +1,9 @@
+{  "nodes": [
+     {"id":"1", "fontcolor":"blue","shape":"plaintext","label":"Cluster ID: 1\nSpecific Mutation Type: Originating cluster\nCost: 0\nOverall Mutation Type: Originating_Cluster\nCandidate originating clusters: \n\nAvg. response times: 0 us ; 6 us\nStandard Deviations: 0 us ; 6 us\nKS-Test2 P-value: -1.000\nCluster likelihood:  0.0000 ; 1.0000\nPercent makeup: 0 / 100\nrequests: 234 ; 234"}
+    ,{"id":"1.10", "label":"e142189__t3__ROOT\n"}
+    ,{"id":"1.30", "label":"e142189__t3__doImportCheckpoint_hadoop_hdfs_server_namenode_FSImage\n"}
+  ],
+  "edges": [
+     {"from":"1.10", "to":"1.30", "color":"black","label":"p:-1.00\n   a: 0us / 0us\n   s: 0us / 0us"}
+    ]
+}

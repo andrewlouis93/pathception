@@ -1,0 +1,3 @@
+cluster_id     	mutation_type                           	s0_likelh           	s1_likelh           	s0_avg_lat     	s1_avg_lat     	s0_stddev      	s1_stddev      	s0_freq        	s1_freq        
+1              	Originating_Cluster                     	1.00000000000000	0.33333333333333	5.500       	0.000       	0.710       	0.000       	2.000       	0.000       
+2              	Structural_Mutation                     	0.33333333333333	1.00000000000000	0.000       	1822321.000 	0.000       	7778.170    	0.000       	2.000       
