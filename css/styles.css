@@ -157,18 +157,18 @@ body {
     margin-top: 21vh;
     margin-bottom: auto;
     right: 0;
-    width: 50px;
-    height: 150px;
+    width: 4em;
+    height: 8em;
     position: absolute;
-    margin-right: 10px;
+    margin-right: 2vw;
 }
 #zoom-value{
     color: #d9534f;
     position: absolute;
     width: 100%;
-    height: 22px;
-    top: -25px;
-    font-size: 17px;
+    height: 2vh;
+    top: -3.5vh;
+    font-size: 1.2em;
     text-align: center;
     font-weight: bold;
 
@@ -177,16 +177,16 @@ body {
 }
 
 #zoom-in,#zoom-out{
-    width: 50px;
-    height: 50px;
-    font-size: 25px;
+    width: 2em;
+    height: 2em;
+    font-size: 2em;
     outline: none;
     font-weight: 600;
     border-radius: 110px;
     padding: 0px;
     margin: 0;
-    padding-bottom: 5px;
-    margin-bottom: 5px;
+    padding-bottom: 1vh;
+    margin-bottom: 1vh;
     border-color: rgba(217, 83, 79, 0.49);
 }
 #zoom-in{
