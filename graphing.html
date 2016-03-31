@@ -178,6 +178,9 @@ function loadProblem(name) {
     var thedir = "graphs/" + name + "/out";
     RFGraph.setdir(thedir);
 
+    $("#cdf-plot").empty();
+    $("#summary-cont").empty();
+
     getgraph("index", function(dta) {
         dta.shift();
 
@@ -203,6 +206,7 @@ function loadProblem(name) {
         });
 
         cont.empty();
+        // $("#summary-cont").empty();
         for (var i = 0; i < dta.length; ++i) {
             var prec = dta[i].precursor;
             var mut = dta[i].id;
@@ -1024,6 +1028,8 @@ $(document).on('mouseover','#zoom-in,#zoom-out', function(){
                     <option value="task4">Task 4</option>
                     <option value="task5">Task 5</option>
                     <option value="fuckingyes">FUCKING YES</option>
+                    <option value="response_test">Response Test</option>
+                    <option value="structural_test">Structural Test</option>
                     <option value="training" selected="selected">Training</option>
                 </select>
             </li>            
