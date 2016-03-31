@@ -78,12 +78,21 @@ body {
 
 #info-cont {
     position: fixed;
-    left: -1px; top: 80px;
+    left: -1px; top: 100px;
 }
 #slider-cont {
+    margin-top: 51px;
     position: fixed;
-    left: -450px; top: 100px;
+    left: -100%;
+    width: 100%;
 }
+#slider-innercont{
+    width:80%; 
+    float:left;
+    position:relative;
+    margin-top:4px    
+}
+
 #help-cont {
     position: fixed;
     top: 0px;
@@ -95,7 +104,7 @@ body {
 }
 #cdf-cont {
     position: fixed;
-    left: -1px; top: 250px;
+    left: -1px; top: 300px;
     padding: 8px;
 }
 #uimode-cont {

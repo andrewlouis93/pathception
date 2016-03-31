@@ -47,8 +47,8 @@ Mode.BLOCKS = {
 	// },
 	"slider": {
 		enabled: false,
-		cssin: { left: -1 },
-		cssout: { left: -450 }
+		cssin: { left: 0 },
+		cssout: { left: '100%' }
 	},
 	// "cdf": {
 	// 	enabled: false,
