@@ -103,7 +103,7 @@ var reYplot = function() {
         var sx = fd.canvas.scaleOffsetX, sy = fd.canvas.scaleOffsetY;
         var tx = fd.canvas.translateOffsetX, ty = fd.canvas.translateOffsetY;
         var dx = -tx / sx, dy = -ty / sy;
-        fd.canvas.translate(dx, dy);
+        // fd.canvas.translate(dx, dy);
         if (fd.canvas.translateHandler) {
             fd.canvas.translateHandler(dx, dy);
         }
@@ -337,7 +337,8 @@ function showInfo(gpre,gmut) {
     };
     var prei = findinfo(gpre.nodes);
     var muti = findinfo(gmut.nodes);
-    $("#summary-cont").empty();
+
+    $("#info-cont.list-group").empty();
     if (prei == null || muti == null) {
         return;
     } else {
@@ -393,13 +394,15 @@ function showInfo(gpre,gmut) {
         "text": gpre.nodes.length + " / " + gmut.nodes.length
     })
 
-    $("#summary-cont").empty();
+    $("#info-cont.list-group").empty();
     for (var i = 0; i < info.length; ++i) {
         $("#summary-cont").append(
-            $("<div>")
-                .append($("<span>").html(info[i].label))
-                .append($("<span>").css({
+            $("<li>")
+                .addClass("list-group-item")
+                .append($("<div>").html(info[i].label).css({"float":"left"}))
+                .append($("<div>").css({
                     "font-weight": "bold",
+                    "float": "right",
                     "margin-left": "5px"
                 }).html(info[i].text))
         );
@@ -633,18 +636,26 @@ function init() {
     
     //initialize move/sel buttons
     //we need to toggle fd.config.Navigation.panning betwixt 'avoid nodes' and false
-    $("#btn-move").button({
-        icons: { primary: "ui-icon-arrow-4-diag" }
-    }).click(function() {
-        var ismov = $(this).text() == "move";
-        var opts = {
-            label: ismov ? "select" : "move",
-            icons: { primary: ismov ? "ui-icon-search" : "ui-icon-arrow-4-diag"}
-        };
-        $(this).button("option", opts);
+    $(document).on('click','#btn-move', function(){
+        var current = $(this).text();
+        var ismov = (current == "select");
+        var newtext = ismov ? "move" : "select";
+        $(this).text(newtext);
         fd.config.Navigation.panning = ismov ? false : "avoid nodes";
         setnavsel(ismov);
     });
+    // $("#btn-move").button({
+    //     icons: { primary: "ui-icon-arrow-4-diag" }
+    // }).click(function() {
+    //     var ismov = $(this).text() == "move";
+    //     var opts = {
+    //         label: ismov ? "select" : "move",
+    //         icons: { primary: ismov ? "ui-icon-search" : "ui-icon-arrow-4-diag"}
+    //     };
+    //     $(this).button("option", opts);
+    //     fd.config.Navigation.panning = ismov ? false : "avoid nodes";
+    //     setnavsel(ismov);
+    // });
     $("#seloverlay").mousemove(function(evt) {
         return true;
     });
@@ -1034,9 +1045,30 @@ $(document).on('mouseover','#zoom-in,#zoom-out', function(){
     </div>
 </div>
 
-<div id="info-cont" class="uiblock">
+<div id="info-cont" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title">
+            <button id="btn-move" class="btn btn-sm" style="margin: 7px 0px 0px 7px;">select</button>
+            <span style="margin:7px 7px 0px 0px;font-size:12px;">
+                &Sigma;(selected) = <span id="txt-sumwt"><i>(not in select mode)</i></span>
+            </span>            
+        </h3>
+      </div>
+      <!-- List group -->
+      <ul id="summary-cont" class="list-group">
+      </ul>      
+
+      <div class="panel-body">
+        <div id="cdf-cont">
+            <div id="cdf-plot" style="width:250px;height:250px">
+            </div>
+        </div>      
+      </div>
+</div>
+
+<!-- <div id="info-cont" class="uiblock">
     <div id="opts-cont">
-        <button id="btn-move" style="margin: 7px 0px 0px 7px;">move</button>
+        <button id="btn-move" style="margin: 7px 0px 0px 7px;">select</button>
         <span style="margin:7px 7px 0px 0px;font-size:1.2em;">
             &Sigma;(selected) = <span id="txt-sumwt"><i>(not in select mode)</i></span>
         </span>
@@ -1044,13 +1076,9 @@ $(document).on('mouseover','#zoom-in,#zoom-out', function(){
     <div id="summary-cont" style="margin: 7px 7px 7px 12px">
 
     </div>
-</div>
+</div> -->
 
-<div id="cdf-cont" class="uiblock">
-    <div id="cdf-plot" style="width:250px;height:250px">
 
-    </div>
-</div>
 
 <!--     <div id="mode-sel-cont">
         <input type="radio" name="rad-mode" id="rad-mode-side" checked="checked"/>
