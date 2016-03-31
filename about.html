@@ -316,22 +316,30 @@ body {
 <section class="panel b-yellow" id="1">
   <article class="panel__wrapper">
     <div class="panel__content">
-      <h1 class="panel__headline"><i class="fa fa-bolt"></i>&nbsp;Lightning</h1>
+      <h1 class="panel__headline"><i class="fa fa-bolt"></i>&nbsp;The Problem</h1>
       <div class="panel__block"></div>
-      <p>Paleo authentic mlkshk taxidermy, vinyl meditation lomo drinking vinegar sartorial raw denim Thundercats bitters selvage listicle. Keffiyeh Williamsburg gastropub McSweeney's.</p>
+      <p>
+          An approach developed in 2014 in the publication: <i><b>lprof</b>:  A nonintrusive request flow profiler for distributed systems introduces a black-box technique to trace a distributed system's requests.</i> 
+
+          That is, generating these traces does not require modifying the distributed system, and generates an event ordering based on the log points associated with a particular request. 
+
+          However, the end user using these traces to diagnose the cause of a performance regression must iterate through request traces, and compare with previous execution traces in order to detect the regression.
+      </p>
     </div>
   </article>
 </section>
 <section class="panel b-red" id="2">
   <article class="panel__wrapper">
     <div class="panel__content">
-      <h1 class="panel__headline"><i class="fa fa-music"></i>&nbsp;Music</h1>
+      <h1 class="panel__headline"><i class="fa fa-music"></i>&nbsp;Spectroscope</h1>
       <div class="panel__block"></div>
-      <p>Beard sriracha kitsch literally, taxidermy normcore aesthetic wayfarers salvia keffiyeh farm-to-table sartorial gluten-free mlkshk. Selvage normcore 3 wolf moon, umami Kickstarter artisan meggings cardigan drinking vinegar bicycle rights.</p>
+      <p>
+        By leveraging the request flow analysis tool Spectroscope, we compute differential analysis on request traces in a non-problem period, and a problem period (i.e. before and after the regression is introduced), and can gauge the differential performance cost of each request (or request group), and subsequently - root cause of the regression.
+      </p>
     </div>
   </article>
 </section>
-<section class="panel b-green" id="3">
+<!-- <section class="panel b-green" id="3">
   <article class="panel__wrapper">
     <div class="panel__content">
       <h1 class="panel__headline"><i class="fa fa-paper-plane"></i>&nbsp;Paper Planes</h1>
@@ -339,7 +347,7 @@ body {
       <p>90's wayfarers lomo you probably haven't heard of them trust fund banh mi. Flannel Shoreditch dreamcatcher, quinoa flexitarian Banksy pickled post-ironic lo-fi. Photo booth asymmetrical tousled letterpress.</p>
     </div>
   </article>
-</section>
+</section> -->
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
