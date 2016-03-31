@@ -2,15 +2,13 @@
 <html>
 
 <head>
-<title>Visualizing Request-Flow Comparison</title>
+<title>nodeMD Demo</title>
 
 <link rel="stylesheet" href="css/styles.css" type="text/css" media="screen">
 
 
 <link rel="stylesheet" href="css/blitzer/jquery-ui-1.8.12.custom.css" type="text/css" media="screen" />
 <link rel="stylesheet" href="css/jquery.cluetip.css" type="text/css">
-
-<link rel="icon" type="image/png" href="css/logo.png" />
 
 <!-- global options -->
 <script language="javascript" type="text/javascript" src="js/options.js"></script>
@@ -743,7 +741,7 @@ $(document).on('click', '.play-btn', function(){
     window.sliderInterval = setInterval(function(){
         var current = $("#fromtoslide").slider("value");
         var setTo = (current + 2) < 100 ? current+2 : 100; 
-        console.log("SET TO : ", setTo);
+        // console.log("SET TO : ", setTo);
         $("#fromtoslide").slider("value", setTo);
         if (setTo == 100){
             clearInterval(window.sliderInterval);
