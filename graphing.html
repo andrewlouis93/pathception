@@ -960,11 +960,13 @@ function finalplot() {
 /* Graph 2x zoom handler here. */
 function zoom2x(mode){
     function scaleUp(){
-        fd.canvas.scale(2,2);
+        // fd.canvas.scale(2,2);
+        fd.canvas.scale(1.5,1.5);
         window.scaledValue += 2;
     }
     function scaleDown(){
-        fd.canvas.scale(0.5,0.5);
+        // fd.canvas.scale(0.5,0.5);
+        fd.canvas.scale(0.666,0.666);
         window.scaledValue -= 2;
     }    
     if (mode == "up"){
