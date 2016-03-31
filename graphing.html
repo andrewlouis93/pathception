@@ -731,10 +731,10 @@ $(document).on('click', '.play-btn', function(){
     $(this).removeClass("play-btn").addClass("pause-btn");
     window.sliderInterval = setInterval(function(){
         var current = $("#fromtoslide").slider("value");
-        var setTo = (current - 2) > 0 ? current-2 : 0; 
+        var setTo = (current + 2) < 100 ? current+2 : 100; 
         console.log("SET TO : ", setTo);
         $("#fromtoslide").slider("value", setTo);
-        if (setTo == 0){
+        if (setTo == 100){
             clearInterval(window.sliderInterval);
             $(".pause-btn").removeClass("pause-btn").addClass("play-btn");
         }
@@ -742,9 +742,14 @@ $(document).on('click', '.play-btn', function(){
 }).on('click', '.pause-btn', function(){
     clearInterval(window.sliderInterval);
     $(this).removeClass('pause-btn').addClass('play-btn');
-})
-
-
+}).on('click', '.switch label', function(){
+  var indicator = $(this).parent('.switch').find('span');
+  if ( $(this).hasClass('right') ){
+        $(indicator).addClass('right');
+  } else {
+    $(indicator).removeClass('right');
+  }
+});
 
 var setslide = function(val, force) {
     var isStopped = $("#btn-blink").text() != "stop";
@@ -1047,12 +1052,19 @@ $(document).on('mouseover','#zoom-in,#zoom-out', function(){
     </div>
 </div>
 
-<div id="uimode-cont" class="uiblock">
-    <div id="mode-sel-cont">
-        <input type="radio" name="rad-mode" id="rad-mode-side" checked="checked"/><label for="rad-mode-side">Side-by-Side</label>
-<!--         <input type="radio" name="rad-mode" id="rad-mode-diff" /><label for="rad-mode-diff">Diff</label>
- -->        <input type="radio" name="rad-mode" id="rad-mode-anim"/><label for="rad-mode-anim">Animation</label>
-    </div>
+<!--     <div id="mode-sel-cont">
+        <input type="radio" name="rad-mode" id="rad-mode-side" checked="checked"/>
+        <label for="rad-mode-side">Side-by-Side</label>    
+        <input type="radio" name="rad-mode" id="rad-mode-anim"/>
+        <label for="rad-mode-anim">Animation</label>
+    </div> -->
+
+<div id="mode-sel-cont" class="switch">
+        <input type="radio" name="rad-mode" id="rad-mode-side" checked>
+        <label for="rad-mode-side">Side-by-Side</label>    
+        <input type="radio" name="rad-mode" id="rad-mode-anim">
+        <label for="rad-mode-anim" class="right">Animation</label>
+  <span aria-hidden="true"></span>
 </div>
 
 <div id="slider-cont" class="bootstrap-box">

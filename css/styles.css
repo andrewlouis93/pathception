@@ -7,8 +7,7 @@ body {
 }
 
 #mode-sel-cont{
-    position: relative;
-    width:100%;
+    position: absolute;
 }
 
 #mode-sel-cont label{
@@ -153,7 +152,7 @@ body {
 #zoom-cont-block{
     top: 0;
     bottom: 0;
-    margin-top: 15%;
+    margin-top: 21vh;
     margin-bottom: auto;
     right: 0;
     width: 50px;

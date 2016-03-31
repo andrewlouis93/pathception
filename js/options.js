@@ -38,7 +38,7 @@ var DIAGRAM_ENABLED = false;
 var GRADER_ENABLED = false;
 
 // Optimize for display on paper?
-var PAPER = true;
+var PAPER = false;
 
 // Does a mousedown drag nodes?
 var MOUSE_DRAGS = false;

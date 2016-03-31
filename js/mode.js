@@ -48,7 +48,7 @@ Mode.BLOCKS = {
 	"slider": {
 		enabled: false,
 		cssin: { left: 0 },
-		cssout: { left: '100%' }
+		cssout: { left: '-100%' }
 	},
 	// "cdf": {
 	// 	enabled: false,
@@ -96,7 +96,7 @@ Mode.init = function(changecb) {
 	Mode.onchange = changecb;
 	cont.children().click(function(e) {
 		var modeid = $(this).attr("id");
-		if (modeid.length > 0) {
+		if (modeid && modeid.length > 0) {
 			Mode.change(modeid);
 		}
 	});
@@ -162,7 +162,7 @@ Mode.change = function(modeid) {
 		break;
 	case "rad-mode-anim":
 		Mode.hideBlock("slider");
-		$("#btn-blink").text("start");
+		// $("#btn-blink").text("start");
 		break;
 	}
 
@@ -178,7 +178,7 @@ Mode.change = function(modeid) {
 		break;
 	case "rad-mode-anim":
 		Mode.showBlock("slider");
-		setslide(100, true);
+		setslide(0, true);
 		//we need to re-icon when we show this.
 		$("#btn-blink").button({
         	icons: { primary: "ui-icon-play" }
