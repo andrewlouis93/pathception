@@ -393,7 +393,7 @@ function showInfo(gpre,gmut) {
     });
     info.push({
         "label": "# Nodes",
-        "text": gpre.nodes.length + " / " + gmut.nodes.length
+        "text": (gpre.nodes.length-1) + " / " + (gmut.nodes.length-1)
     })
 
     $("#info-cont.list-group").empty();
@@ -1012,25 +1012,9 @@ $(document).on('mouseover','#zoom-in,#zoom-out', function(){
             <li class="active"><a href="/graphing.html">Demo</a></li>
             <li class="select-padding">
                 <select id="sel-problem" class="form-control">
-                    <option value="iozone_mws">IOzone</option>
-                    <option value="mds_prefetch_10">Prefetch 10</option>
-                    <option value="mds_prefetch_50">Prefetch 50</option>
-                    <option value="postmark_large_10">MDS Config</option>
-                    <option value="mdsconfig">mdsconfig</option>
-                    <option value="hadoop">Hadoop</option>
-                    <option value="hadoop_compressed">Hadoop Cmp</option>
-                    <option value="spectroscope_1ms">1ms Spin</option>
-                    <option value="spectroscope_10us">10us Spin</option>
-                    <option value="spectroscope_500us">500us Spin</option>
-                    <option value="task1">Task 1</option>
-                    <option value="task2">Task 2</option>
-                    <option value="task3">Task 3</option>
-                    <option value="task4">Task 4</option>
-                    <option value="task5">Task 5</option>
-                    <option value="fuckingyes">FUCKING YES</option>
+                    <option value="structural_test" selected="selected">Structural Test</option>
                     <option value="response_test">Response Test</option>
-                    <option value="structural_test">Structural Test</option>
-                    <option value="training" selected="selected">Training</option>
+                    <option value="training">Training</option>
                 </select>
             </li>            
           </ul>

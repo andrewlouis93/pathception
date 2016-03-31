@@ -199,7 +199,9 @@ RFGraph.dodiff = function(/**GraphData*/ precursor, /**GraphData*/ mutation) {
         255: Const.COLORS[++icoldx],
         100: Const.COLORS[++icoldx],
         10: Const.COLORS[++icoldx],
-        5100: Const.COLORS[++icoldx]
+        5100: Const.COLORS[++icoldx],
+        142158: Const.COLORS[13],
+        142189: Const.COLORS[7]
     };
  	var gpre = RFGraph.flatten(makegraph(precursor, {
         cols: initialcols,
@@ -509,6 +511,9 @@ RFGraph.makegraph = function(graph, options) {
                         lblcol = cols[eid];
                     } else {
                         Util.info("Color not found for key ", eid);
+                        // lblcol = cols[5];
+                        // console.log("COLOR: ". lblcol);
+                        // console.log("COLORS: ", cols);
                         lblcol = cols[eid] = Const.COLORS[++coldx];
                     }
                     //if there was a __, add 2 to the length of the matched string
@@ -520,7 +525,9 @@ RFGraph.makegraph = function(graph, options) {
                     substlen += lblsp[1].length + 2;
                 }
 
-                lbl = getReadableName(lbl, eid, tid, lbl.substring(substlen));
+                // strip t3 flag
+                lbl = lbl.split("t3__").join("");
+                // lbl = getReadableName(lbl, eid, tid, lbl.substring(substlen));
             }
         }
         
