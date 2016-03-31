@@ -726,6 +726,7 @@ Tasks.init = function() {
 }
 
 
+// DELETE ALL THE REDUNDANT SETSLIDE STUFF...
 $(document).on('click', '.play-btn', function(){
     $(this).removeClass("play-btn").addClass("pause-btn");
     window.sliderInterval = setInterval(function(){
@@ -1075,9 +1076,9 @@ $(document).on('mouseover','#zoom-in,#zoom-out', function(){
     <span id="legend-after">After</span>
 </div> -->
 
-<div id="zoom-cont-block" class="uiblock ui-styles">
+<div id="zoom-cont-block">
     <label id="zoom-value" for="zoom">0x</label>
-    <div id="zoom-cont" class="button-set">
+    <div id="zoom-cont" class="button-group-vertical">
         <button id="zoom-in" role="button" class="btn btn-default btn-lg">+</button>
         <button id="zoom-out" role="button" class="btn btn-default btn-lg">-</button>
     </div>
